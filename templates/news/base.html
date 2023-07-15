@@ -38,6 +38,12 @@
             </ul>
           </div>
           <div class="header_top_right">
+            {% if request.user.is_authenticated %}
+            <p><a href="{% url 'logout' %}" style="color: red">Log out</a></p>
+            <p><a href="{% url 'user_profile' %}" style="color: palegreen">My profile</a></p>
+            {% else %}
+            <p><a href="{% url 'login' %}" style="color: palegreen">Saytga kirish</a></p>
+            {% endif %}
             <p>{% now "jS F Y H:i" %}</p>
           </div>
         </div>
@@ -64,6 +70,11 @@
           <li><a href="{% url 'sport_news_page' %}">Sport</a></li>
           <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
 <!--          <li><a href="{% url '404_page' %}">404 Page</a></li>-->
+          <li>
+            <form method="get" action="{% url 'search_result' %}">
+              <input type="search" name="q" placeholder="Qidiruv..." class="form-control">
+            </form>
+          </li>
         </ul>
       </div>
     </nav>
@@ -74,7 +85,7 @@
         <div class="latest_newsarea"> <span>So'nggi yangiliklar</span>
           <ul id="ticker01" class="news_sticker">
             {% for news in latest_news %}
-            <li><a href="{% url 'news_detail_page' news.pk %}"><img src="{{ news.image.url }}" alt="">{{ news.title }}</a></li>
+            <li><a href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="">{{ news.title }}</a></li>
             {% endfor %}
           </ul>
           <div class="social_area">

@@ -1,0 +1,47 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %} Foydalanuvchi profili {% endblock title %}
+{% block content %}
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_post_content">
+            <h2><span>Foydalanuvchi profili</span></h2>
+            <h3>Xush kelibsiz, {{ user.username }} <a href="{% url 'logout' %}" class="btn btn-danger">Log out</a></h3>
+            <h2><span>Siz haqingizdagi ma'lumotlar</span></h2>
+            <a class="media-left"> <img alt="" src="{{ profile.photo.url }}"> </a>
+            <label>Username:</label> <input class="form-control" value="{{ user.username }}" readonly placeholder="Kiritilmagan">
+            <label>Emilingiz:</label> <input class="form-control" value="{{ user.email }}" readonly placeholder="Kiritilmagan">
+            <label>Ismingiz:</label> <input class="form-control" value="{{ user.first_name }}" readonly placeholder="Kiritilmagan">
+            <label>Familiyangiz:</label> <input class="form-control" value="{{ user.last_name }}" readonly placeholder="Kiritilmagan">
+            <label>Tug'ulgan kunnigiz:</label> <input class="form-control" value="{{ profile.data_of_birth }}" readonly placeholder="Kiritilmagan">
+          </div>
+          <a href="{% url 'password_change' %}"  class="btn btn-danger">Parolni almashtirish</a>
+          <a href="{% url 'edit_user_information' %}"  class="btn btn-danger">Profilni o'zgartirish</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="latest_post">
+            <h2><span>So'nggi yangiliklar</span></h2>
+            <div class="latest_post_container">
+              <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+              <ul class="latest_postnav">
+                {% for news in latest_news %}
+                <li>
+                  <div class="media"> <a href="{{ news.get_absolute_url }}" class="media-left"> <img alt="" src="{{ news.image.url }}"> </a>
+                    <div class="media-body"> <a href="{{ news.get_absolute_url }}" class="catg_title">{{ news.title | truncatewords:8 }}</a> </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+              <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+{% endblock %}

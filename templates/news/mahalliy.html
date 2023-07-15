@@ -1,7 +1,8 @@
 {% extends 'news/base.html' %}
 {% load static %}
+{% load hitcount_tags %}
 
-{% block title %} Bosh sahifa {% endblock title %}
+{% block title %} Mahalliy yangiliklar {% endblock title %}
 {% block content %}
   <section id="sliderSection">
     <div class="row">
@@ -11,7 +12,10 @@
               <ul class="business_catgnav">
                 <li>
                   <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="{{ news.get_absolute_url }}"> <img src="{{ news.image.url }}" alt=""> <span class="overlay"></span> </a>
-                    <figcaption class="media"> <a href="{{ news.get_absolute_url }}" class="media-left">{{ news.title }}</a> </figcaption>
+                    <figcaption class="media">
+                      <a href="{{ news.get_absolute_url }}" class="media-left">{{ news.title }}</a>
+                      <p>Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true">{% get_hit_count for news %}</i></p>
+                    </figcaption>
                   </figure>
                 </li>
               </ul>
@@ -27,7 +31,9 @@
               {% for news in latest_news %}
               <li>
                 <div class="media"> <a href="{{ news.get_absolute_url }}" class="media-left"> <img alt="" src="{{ news.image.url }}"> </a>
-                  <div class="media-body"> <a href="{{ news.get_absolute_url }}" class="catg_title">{{ news.title | truncatewords:8 }}</a> </div>
+                  <div class="media-body"> <a href="{{ news.get_absolute_url }}" class="catg_title">{{ news.title | truncatewords:8 }}</a>
+                  <p>Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true">{% get_hit_count for news %}</i></p>
+                  </div>
                 </div>
               </li>
               {% endfor %}
