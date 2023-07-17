@@ -9,7 +9,7 @@ from .models import News, Category, Contact, Comment
 class NewsAdmin(admin.ModelAdmin):
     list_display = ["title", "slug", "publish_time", "status"]
     list_filter = ["category", "status", "created_time", "publish_time"]
-    prepopulated_fields = {"slug": ('title',)}
+    prepopulated_fields = {"slug": ('title',),}
     date_hierarchy = 'publish_time'
     search_fields = ['title', 'body']
     ordering = ['status', 'publish_time']

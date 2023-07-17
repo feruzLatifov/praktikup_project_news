@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-17 11:03+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\news_project\settings.py:136
+msgid "Uzbek"
+msgstr ""
+
+#: .\news_project\settings.py:137
+msgid "English"
+msgstr ""
+
+#: .\news_project\settings.py:138
+msgid "Russian"
+msgstr ""
+
+#: .\templates\news\about.html:6
+#, fuzzy
+#| msgid "Biz haqimizda"
+msgid "Biz haqimizda sahifasi"
+msgstr "О нас"
+
+#: .\templates\news\about.html:14 .\templates\news\base.html:37
+msgid "Biz haqimizda"
+msgstr "О нас"
+
+#: .\templates\news\about.html:23 .\templates\news\home.html:220
+#: .\templates\news\mahalliy.html:48 .\templates\news\news_detail.html:83
+#: .\templates\news\serch_result.html:43 .\templates\news\sport.html:49
+#: .\templates\news\texnologiya.html:48 .\templates\news\xorij.html:49
+msgid "Ommabop"
+msgstr "Популярный"
+
+#: .\templates\news\base.html:36 .\templates\news\home.html:7
+msgid "Bosh sahifa"
+msgstr "Главная страница"
+
+#: .\templates\news\base.html:38 .\templates\news\base.html:89
+#: .\templates\news\base.html:149 .\templates\news\contact.html:7
+#: .\templates\news\contact.html:15
+msgid "Biz bilan aloqa"
+msgstr "Контакт"
+
+#: .\templates\news\base.html:40
+msgid "Admin sahifasi"
+msgstr "Страница администратора"
+
+#: .\templates\news\base.html:60
+msgid "Chiqish"
+msgstr "Выйти"
+
+#: .\templates\news\base.html:61
+msgid "Mening sahifam"
+msgstr "Мой профайл"
+
+#: .\templates\news\base.html:63
+msgid "Saytga kirish"
+msgstr "Авторизоваться"
+
+#: .\templates\news\base.html:85 .\templates\news\home.html:51
+msgid "Mahalliy"
+msgstr "Местный"
+
+#: .\templates\news\base.html:86
+msgid "Xorij"
+msgstr "Иностранный"
+
+#: .\templates\news\base.html:87 .\templates\news\home.html:117
+msgid "Texnologiya"
+msgstr "Технология"
+
+#: .\templates\news\base.html:88 .\templates\news\home.html:183
+msgid "Sport"
+msgstr "Спорт"
+
+#: .\templates\news\base.html:103 .\templates\news\contact.html:29
+#: .\templates\news\home.html:26 .\templates\news\mahalliy.html:30
+#: .\templates\news\news_detail.html:65 .\templates\news\serch_result.html:27
+#: .\templates\news\sport.html:30 .\templates\news\texnologiya.html:29
+#: .\templates\news\xorij.html:30
+msgid "So'nggi yangiliklar"
+msgstr "Последние новости"
+
+#: .\templates\news\contact.html:38 .\templates\news\home.html:34
+#: .\templates\news\home.html:60 .\templates\news\home.html:74
+#: .\templates\news\home.html:94 .\templates\news\home.html:106
+#: .\templates\news\home.html:125 .\templates\news\home.html:137
+#: .\templates\news\home.html:192 .\templates\news\home.html:206
+#: .\templates\news\mahalliy.html:20 .\templates\news\mahalliy.html:38
+#: .\templates\news\news_detail.html:73 .\templates\news\sport.html:20
+#: .\templates\news\sport.html:39 .\templates\news\texnologiya.html:19
+#: .\templates\news\texnologiya.html:38 .\templates\news\xorij.html:20
+#: .\templates\news\xorij.html:39
+msgid "Ko'rilganlar soni"
+msgstr "Количество просмотров"
+
+#: .\templates\news\home.html:86
+msgid "Xorij xabarlari"
+msgstr "Иностранный"
+
+#: .\templates\news\home.html:293 .\templates\news\mahalliy.html:121
+#: .\templates\news\news_detail.html:156 .\templates\news\serch_result.html:116
+#: .\templates\news\sport.html:122 .\templates\news\texnologiya.html:121
+#: .\templates\news\xorij.html:122
+msgid "Barcha kategoriyalar"
+msgstr "Все категории"
+
+#: .\templates\news\home.html:295 .\templates\news\mahalliy.html:123
+#: .\templates\news\news_detail.html:158 .\templates\news\serch_result.html:118
+#: .\templates\news\sport.html:124 .\templates\news\texnologiya.html:123
+#: .\templates\news\xorij.html:124
+msgid "Kategoriyani tanlang"
+msgstr "Выберите категорию"
+
+#: .\templates\news\mahalliy.html:7
+#, fuzzy
+#| msgid "So'nggi yangiliklar"
+msgid "Mahalliy yangiliklar"
+msgstr "Последние новости"
+
+#: .\templates\news\news_detail.html:18
+#, fuzzy
+#| msgid "Ko'rilganlar soni"
+msgid "Izohlar soni"
+msgstr "Количество просмотров"
+
+#: .\templates\news\serch_result.html:6 .\templates\news\serch_result.html:13
+msgid "Qidiruv natijalari"
+msgstr ""
+
+#: .\templates\news\sport.html:7
+#, fuzzy
+#| msgid "So'nggi yangiliklar"
+msgid "Sport yangiliklari"
+msgstr "Последние новости"
+
+#: .\templates\news\texnologiya.html:7
+#, fuzzy
+#| msgid "So'nggi yangiliklar"
+msgid "Texnologiya yangiliklari"
+msgstr "Последние новости"
+
+#: .\templates\news\xorij.html:7
+#, fuzzy
+#| msgid "So'nggi yangiliklar"
+msgid "Xorij yangiliklari"
+msgstr "Последние новости"

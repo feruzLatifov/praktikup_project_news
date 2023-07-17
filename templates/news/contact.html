@@ -1,15 +1,18 @@
 {% extends 'news/base.html' %}
 {% load static %}
 {% load hitcount_tags %}
+{% load i18n %}
 
-{% block title %} Biz bilan aloqa {% endblock title %}
+{% block title %}
+{% blocktrans %}Biz bilan aloqa{% endblocktrans %}
+{% endblock title %}
 {% block content %}
   <section id="contentSection">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
           <div class="contact_area">
-            <h2>Biz bilan aloqa</h2>
+            <h2>{% blocktrans %}Biz bilan aloqa{% endblocktrans %}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             <form action="#" class="contact_form" method="post">{% csrf_token %}
               <input class="form-control" type="text" placeholder="Name*" name="name">
@@ -23,7 +26,7 @@
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="latest_post">
-            <h2><span>So'nggi yangiliklar</span></h2>
+            <h2><span>{% blocktrans %}So'nggi yangiliklar{% endblocktrans %}</span></h2>
             <div class="latest_post_container">
               <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
               <ul class="latest_postnav">
@@ -32,7 +35,7 @@
                   <div class="media"> <a href="{{ news.get_absolute_url }}" class="media-left"> <img alt="" src="{{ news.image.url }}"> </a>
                     <div class="media-body">
                       <a href="{{ news.get_absolute_url }}" class="catg_title">{{ news.title | truncatewords:8 }}</a>
-                      <p>Ko'rilganlar soni: <i class="fa fa-eye" aria-hidden="true">{% get_hit_count for news %}</i></p>
+                      <p>{% blocktrans %}Ko'rilganlar soni{% endblocktrans %}: <i class="fa fa-eye" aria-hidden="true">{% get_hit_count for news %}</i></p>
                     </div>
                   </div>
                 </li>

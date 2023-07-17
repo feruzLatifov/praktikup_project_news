@@ -102,8 +102,8 @@ def news_detail(request, news):
 def homePageView(request):
     categories = Category.objects.all()
     news_list = News.published.all().order_by('-publish_time')[:5]
-    local_one = News.published.filter(category__name="Mahalliy").order_by("-publish_time")[:1]
-    local_news = News.published.all().filter(category__name="Mahalliy").order_by("-publish_time")[1:5]
+    local_one = News.published.filter(category__name_uz="Mahalliy").order_by("-publish_time")[:1]
+    local_news = News.published.all().filter(category__name_uz="Mahalliy").order_by("-publish_time")[1:5]
     context = {
         'news_list': news_list,
         "categories": categories,
@@ -123,10 +123,10 @@ class HomePageView(ListView):
         context['news_list'] = News.published.all().order_by('-publish_time')[:15]
         # context['local_one'] = News.published.filter(category__name="Mahalliy").order_by("-publish_time")[:1]
         # context['local_news'] = News.published.all().filter(category__name="Mahalliy").order_by("-publish_time")[1:5]
-        context['mahalliy_xabarlar'] = News.published.all().filter(category__name="Mahalliy").order_by("-publish_time")[:5]
-        context['xorij_xabarlar'] = News.published.all().filter(category__name="Xorij").order_by("-publish_time")[:5]
-        context['texnologiya_xabarlar'] = News.published.all().filter(category__name="Texnologiya").order_by("-publish_time")[:5]
-        context['sport_xabarlar'] = News.published.all().filter(category__name="Sport").order_by("-publish_time")[:5]
+        context['mahalliy_xabarlar'] = News.published.all().filter(category__name_uz="Mahalliy").order_by("-publish_time")[:5]
+        context['xorij_xabarlar'] = News.published.all().filter(category__name_uz="Xorij").order_by("-publish_time")[:5]
+        context['texnologiya_xabarlar'] = News.published.all().filter(category__name_uz="Texnologiya").order_by("-publish_time")[:5]
+        context['sport_xabarlar'] = News.published.all().filter(category__name_uz="Sport").order_by("-publish_time")[:5]
         return context
 
 class LocalNewsView(ListView):
@@ -135,7 +135,7 @@ class LocalNewsView(ListView):
     context_object_name = 'mahalliy_yangiliklar'
 
     def get_queryset(self):
-        news = News.published.all().filter(category__name="Mahalliy").order_by("-publish_time")
+        news = News.published.all().filter(category__name_uz="Mahalliy").order_by("-publish_time")
         return news
 
 class ForeignNewsView(ListView):
@@ -144,7 +144,7 @@ class ForeignNewsView(ListView):
     context_object_name = 'xorij_yangiliklar'
 
     def get_queryset(self):
-        news = self.model.published.all().filter(category__name="Xorij").order_by("-publish_time")
+        news = self.model.published.all().filter(category__name_uz="Xorij").order_by("-publish_time")
         return news
 
 class TechnologyNewsView(ListView):
@@ -153,7 +153,7 @@ class TechnologyNewsView(ListView):
     context_object_name = 'texnologiya_yangiliklar'
 
     def get_queryset(self):
-        news = self.model.published.all().filter(category__name="Texnologiya").order_by("-publish_time")
+        news = self.model.published.all().filter(category__name_uz="Texnologiya").order_by("-publish_time")
         return news
 
 class SportNewsView(ListView):
@@ -162,7 +162,7 @@ class SportNewsView(ListView):
     context_object_name = 'sport_yangiliklar'
 
     def get_queryset(self):
-        news = self.model.published.all().filter(category__name="Sport").order_by("-publish_time")
+        news = self.model.published.all().filter(category__name_uz="Sport").order_by("-publish_time")
         return news
 
 # funksiya orqali ishlatish
@@ -212,14 +212,16 @@ def aboutPageView(request):
 
 class NewsUpdateView(OnlyLoggedSuperUser, UpdateView):
     model = News
-    fields = ('title', 'slug', 'body', 'image', 'category', 'status', )
+    fields = ('title', 'title_uz', 'title_en', 'title_ru',
+              'slug', 'body', 'body_uz', 'body_en', 'body_ru',
+              'image', 'category', 'status')
     template_name = 'crud/news_edit.html'
 
     def form_valid(self, form):
         self.News = form.save(commit=False)
 
         if not self.News.slug:
-            self.News.slug = slugify(self.News.title)
+            self.News.slug = slugify(self.News.title_uz)
 
         self.News.save()
 
@@ -228,13 +230,15 @@ class NewsUpdateView(OnlyLoggedSuperUser, UpdateView):
 class NewsCreateView(OnlyLoggedSuperUser, CreateView):
     model = News
     template_name = 'crud/news_create.html'
-    fields = ('title', 'slug', 'body', 'image', 'category', 'status')
+    fields = ('title', 'title_uz', 'title_en', 'title_ru',
+              'slug', 'body', 'body_uz', 'body_en', 'body_ru',
+              'image', 'category', 'status')
 
     def form_valid(self, form):
         self.News = form.save(commit=False)
 
         if not self.News.slug:
-            self.News.slug = slugify(self.News.title)
+            self.News.slug = slugify(self.News.title_uz)
 
         self.News.save()
 

@@ -1,13 +1,16 @@
 {% extends 'news/base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %} Qidiruv natijalari {% endblock title %}
+{% block title %}
+{% blocktrans %}Qidiruv natijalari{% endblocktrans %}
+{% endblock title %}
 {% block content %}
   <section id="sliderSection">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="single_post_content">
-          <h2><span>Qidiruv natijalari</span></h2>
+          <h2><span>{% blocktrans %}Qidiruv natijalari{% endblocktrans %}</span></h2>
           {% for yangilik in barcha_yangiliklar %}
               <ul class="business_catgnav">
                 <li>
@@ -21,7 +24,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="latest_post">
-          <h2><span>So'nggi yangiliklar</span></h2>
+          <h2><span>{% blocktrans %}So'nggi yangiliklar{% endblocktrans %}</span></h2>
           <div class="latest_post_container">
             <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
             <ul class="latest_postnav">
@@ -37,7 +40,7 @@
           </div>
           <aside class="right_content">
           <div class="single_sidebar">
-            <h2><span>Ommabop</span></h2>
+            <h2><span>{% blocktrans %}Ommabop{% endblocktrans %}</span></h2>
             <ul class="spost_nav">
               <li>
                 <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
@@ -110,9 +113,9 @@
             <h2><span>Sponsor</span></h2>
             <a class="sideAdd" href="#"><img src="{% static 'images/add_img.jpg' %}" alt=""></a> </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Barcha kategoriyalar</span></h2>
+            <h2><span>{% blocktrans %}Barcha kategoriyalar{% endblocktrans %}</span></h2>
             <select class="catgArchive">
-              <option>Kategoriyani tanlang</option>
+              <option>{% blocktrans %}Kategoriyani tanlang{% endblocktrans %}</option>
               {% for kategory in categories %}
               <option>{{ kategory.name }}</option>
               {% endfor %}

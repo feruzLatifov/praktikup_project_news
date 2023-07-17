@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 import django.contrib.staticfiles.finders
 
@@ -22,12 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*qrzmo@$=mc8s45lafl5iypy4%st@-*6qlsy4om72672mqs!#$'
+SECRET_KEY = config('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -44,6 +47,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'hitcount',
+    'modeltranslation',
+    'whitenoise.runserver_nostatic',
 ]
 
 CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
@@ -56,7 +61,9 @@ CKEDITOR_CONFIGS = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -78,6 +85,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'news_app.context_processor.latest_news',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -119,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uz-uz'
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -127,6 +135,17 @@ USE_I18N = True
 
 USE_TZ = True
 
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGES = [
+    ('uz', _("Uzbek")),
+    ('en', _("English")),
+    ('ru', _("Russian")),
+]
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
+
+LOCALE_PATHS = BASE_DIR, 'locale'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -154,3 +173,5 @@ LOGIN_REDIRECT_URL = 'home_page'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_URL = 'login'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
